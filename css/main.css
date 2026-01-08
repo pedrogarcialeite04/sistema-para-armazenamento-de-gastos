@@ -1,0 +1,18 @@
+:root {
+    --neon-blue: #00f2ff;
+    --neon-green: #00d26a;
+    --neon-red: #ff4757;
+    --glass-bg: rgba(15, 15, 15, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --depth-shadow: 10px 10px 20px rgba(0,0,0,0.5), -5px -5px 15px rgba(255,255,255,0.02);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; user-select: none; }
+
+body {
+    width: 100vw; height: 100vh; overflow: hidden;
+    background-color: #f0f2f5; 
+    display: flex; justify-content: center; align-items: center;
+    transition: background-color 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body.dark-mode { background-color: #030303; }
+::-webkit-scrollbar { width: 0px; }

@@ -1,0 +1,10 @@
+:root {
+    --neon-blue: #00f2ff;
+    --neon-green: #00d26a;
+    --neon-red: #ff4757;
+    
+    /* Variáveis de Vidro (Glassmorphism) */
+    --glass-bg: rgba(15, 15, 15, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --depth-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+}

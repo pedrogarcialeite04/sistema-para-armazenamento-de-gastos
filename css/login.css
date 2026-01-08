@@ -1,0 +1,281 @@
+/* --- LOGIN --- */
+.scene-login {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    left: 0; 
+    z-index: 50;
+    transition: all 0.8s ease-in-out; 
+    transform-origin: center center;
+}
+
+.scene-login.fade-out { 
+    opacity: 0; 
+    transform: scale(3); 
+    filter: blur(30px); 
+    pointer-events: none; 
+    visibility: hidden; 
+}
+
+.bg-text {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 15vw;
+    color: rgba(0,0,0,0.03); 
+    white-space: nowrap; 
+    pointer-events: none;
+}
+
+.robot-wrapper {
+    position: absolute; 
+    width: 100%; 
+    height: 110%; 
+    top: -10%; 
+    left: 0;
+    mix-blend-mode: multiply; 
+    z-index: 1; 
+    pointer-events: none;
+}
+
+spline-viewer { 
+    pointer-events: auto; 
+    width: 100%; 
+    height: 100%; 
+    background: transparent !important; 
+}
+
+.login-ui {
+    position: absolute; 
+    bottom: 10%; 
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 10; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    width: 320px;
+}
+
+.glass-field { 
+    position: relative; 
+    width: 100%; 
+}
+
+.glass-field i { 
+    position: absolute; 
+    left: 0; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: #666; 
+    transition: 0.3s; 
+}
+
+.glass-input {
+    width: 100%; 
+    padding: 12px 10px 12px 35px; 
+    background: transparent; 
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2); 
+    font-weight: 500; 
+    outline: none; 
+    transition: 0.4s;
+}
+
+.glass-input:focus { 
+    border-bottom: 2px solid #000; 
+}
+
+.btn-container { 
+    margin-top: 25px; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.btn-enter {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%; 
+    background: rgba(10, 10, 10, 0.5);
+    -webkit-backdrop-filter: blur(10px); /* Correção para Safari/Chrome */
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    color: #fff;
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: 0.4s;
+}
+
+.btn-enter:hover { 
+    transform: scale(1.15); 
+    background: #fff; 
+    color: #000; 
+    box-shadow: 0 0 30px #fff; 
+}
+
+.btn-enter.animating i { 
+    animation: arrowDrag 0.6s forwards; 
+}
+
+@keyframes arrowDrag { 
+    0% { transform: translateX(0); opacity: 1; } 
+    50% { transform: translateX(50px); opacity: 0; } 
+    51% { transform: translateX(-50px); opacity: 0; } 
+    100% { transform: translateX(0); opacity: 1; } 
+}
+
+/* --- WELCOME / MATRIX --- */
+.scene-welcome {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1; 
+    opacity: 0;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    perspective: 1500px; 
+    pointer-events: none; 
+    overflow: hidden; 
+    background: #000;
+}
+
+#codeMatrix { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    opacity: 0.3; 
+    z-index: 0; 
+}
+
+.scene-welcome.active { 
+    z-index: 40; 
+    opacity: 1; 
+    transition: opacity 1s; 
+}
+
+.scene-welcome.finished { 
+    z-index: -10; 
+    display: none; 
+}
+
+.welcome-sup {
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 200; 
+    font-size: 1.5rem; 
+    letter-spacing: 8px;
+    color: #fff; 
+    margin-bottom: -10px; 
+    opacity: 0; 
+    transform: translateY(-20px);
+    text-shadow: 0 0 10px rgba(255,255,255,0.5); 
+    position: relative; 
+    z-index: 5;
+}
+
+.text-3d-wrapper { 
+    transform-style: preserve-3d; 
+    animation: float3D 6s ease-in-out infinite; 
+    position: relative; 
+    z-index: 5; 
+}
+
+.super-text {
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 900; 
+    font-size: 13vw; 
+    line-height: 1;
+    background: linear-gradient(to bottom, #ffffff, #6d7a8a); 
+    -webkit-background-clip: text; /* Clip para navegadores Webkit */
+    background-clip: text; /* Propriedade padrão */
+    -webkit-text-fill-color: transparent; 
+    color: transparent; /* Fallback padrão */
+    text-shadow: 0 10px 0 #20323c, 0 0 50px rgba(0, 242, 255, 0.2); 
+    opacity: 0;
+}
+
+.active .welcome-sup { 
+    animation: fadeDown 1.5s ease forwards 0.5s; 
+}
+
+.active .super-text { 
+    animation: enter3D 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; 
+}
+
+.scene-welcome.warp-speed { 
+    transition: 0.8s ease-in; 
+    opacity: 0; 
+}
+
+.scene-welcome.warp-speed .text-3d-wrapper { 
+    animation: warpDrive 0.8s ease-in forwards; 
+}
+
+@keyframes warpDrive { 
+    0% { transform: translateZ(0); } 
+    100% { transform: translateZ(2000px); opacity: 0; } 
+}
+
+@keyframes enter3D { 
+    0% { opacity: 0; transform: translateZ(-1000px) rotateX(90deg); } 
+    100% { opacity: 1; transform: translateZ(0) rotateX(0deg); } 
+}
+
+@keyframes fadeDown { 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+@keyframes float3D { 
+    0%, 100% { transform: rotateX(10deg) rotateY(-5deg); } 
+    50% { transform: rotateX(0deg) rotateY(5deg); } 
+}
+/* --- COBERTURA DA MARCA D'ÁGUA (STATUS DO SISTEMA) --- */
+.watermark-cover {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 20; /* Fica acima do robô 3D */
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    background: rgba(5, 5, 10, 0.85); /* Fundo escuro semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    padding: 8px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    pointer-events: none; /* Deixa clicar através dele se necessário, mas cobre visualmente */
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #00d26a; /* Verde Neon */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00d26a, 0 0 20px #00d26a;
+    animation: pulseStatus 2s infinite ease-in-out;
+}
+
+@keyframes pulseStatus {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}

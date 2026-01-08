@@ -1,0 +1,32 @@
+
+{
+  "name": "ultimate-finance-os",
+  "version": "3.0.0",
+  "description": "Sistema de controle financeiro pessoal com interface Cyberpunk e visualização de dados em tempo real.",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/finance-os.git"
+  },
+  "keywords": [
+    "finance",
+    "dashboard",
+    "cyberpunk",
+    "chartjs",
+    "javascript",
+    "frontend"
+  ],
+  "author": "Pedro <seu-email@exemplo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seu-usuario/finance-os/issues"
+  },
+  "homepage": "https://github.com/seu-usuario/finance-os#readme",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

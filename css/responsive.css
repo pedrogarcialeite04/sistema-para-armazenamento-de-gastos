@@ -1,0 +1,27 @@
+@media (max-width: 1000px) {
+    .scene-dashboard { 
+        grid-template-columns: 1fr; 
+        overflow-y: auto; 
+        display: block; 
+        padding: 15px;
+    }
+
+    .sidebar-area { 
+        height: auto; 
+        border-right: none; 
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 20px;
+    }
+
+    /* Correção do Zoom no iPhone (Força fonte 16px) */
+    .neo-input, .neo-select, .type-opt, .btn-save-pro { font-size: 16px !important; padding: 16px; }
+
+    .main-content-area { padding: 20px; }
+    .content-grid { grid-template-columns: 1fr; display: flex; flex-direction: column-reverse; }
+    .chart-container { height: 280px; }
+    .cards-container { grid-template-columns: 1fr; gap: 15px; }
+    .card-value { font-size: 1.8rem; }
+    
+    #toast-container { right: 0; left: 0; top: 0; align-items: center; padding: 10px; }
+    .toast { width: 95%; }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas financias Interativo</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@200;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="scene-login" id="sceneLogin">
+        <div class="bg-text">BEM VINDO</div>
+        <div class="robot-wrapper">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/h5JKcGQq0BGb9C0m/scene.splinecode"></spline-viewer>
+        </div>
+        
+        <form class="login-ui" id="loginForm">
+            <div class="glass-field">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" id="userInput" class="glass-input" placeholder="Usuário" required>
+            </div>
+            <div class="glass-field">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="passInput" class="glass-input" placeholder="Senha" required>
+            </div>
+            <div class="btn-container">
+                <button type="submit" class="btn-enter"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </form>
+
+        <div class="watermark-cover">
+            <div class="status-dot"></div>
+            <span>SISTEMA RODANDO</span>
+        </div>
+
+    </div>
+
+    <div class="scene-welcome" id="sceneWelcome">
+        <canvas id="codeMatrix"></canvas>
+        <div class="welcome-sup">SEJA BEM VINDO DE VOLTA</div>
+        <div class="text-3d-wrapper">
+            <div class="super-text">PEDRO</div>
+        </div>
+    </div>
+
+    <div class="scene-dashboard" id="sceneDashboard">
+        
+        <canvas id="dashMatrix"></canvas>
+
+        <div class="sidebar-area block-3d d-1">
+            <div class="brand-3d-container" id="brand3D">
+                <div class="brand-area" id="brandText">REGISTROS <span></span></div>
+                <div class="brand-subtitle">Sistema de Controle||Devpedro</div>
+            </div>
+
+            <div class="neo-input-group" style="margin-top:20px;">
+                <label class="neo-label">Operação</label>
+                <div class="type-selector">
+                    <div class="type-opt active" data-type="income" onclick="selectType('income')">
+                        <i class="fa-solid fa-arrow-trend-up"></i>&nbsp; Entrada
+                    </div>
+                    <div class="type-opt" data-type="expense" onclick="selectType('expense')">
+                        <i class="fa-solid fa-arrow-trend-down"></i>&nbsp; Saída
+                    </div>
+                </div>
+            </div>
+
+            <div class="neo-input-group">
+                <label class="neo-label">Categoria</label>
+                <select id="catInput" class="neo-select">
+                    <option value="wallet">Compras Diversas</option>
+                    <option value="house">Faturas / Contas</option>
+                    <option value="utensils">Alimentação</option>
+                    <option value="car">Transporte / Gasolina</option>
+                    <option value="gamepad">Lazer / Gastos Pessoais</option>
+                    <option value="briefcase">Salário / Vales.</option>
+                </select>
+            </div>
+
+            <div class="neo-input-group">
+                <label class="neo-label">Descrição</label>
+                <input type="text" id="descInput" class="neo-input" placeholder="Ex: Projeto Freelance">
+            </div>
+
+            <div class="neo-input-group">
+                <label class="neo-label">Valor (R$)</label>
+                <input type="number" id="amountInput" class="neo-input" placeholder="0.00">
+            </div>
+
+            <div class="neo-input-group">
+                <label class="neo-label">Data da Transação</label>
+                <input type="date" id="dateInput" class="neo-input">
+            </div>
+
+            <button id="mainBtn" class="btn-save-pro" onclick="handleTransactionSubmit()">
+                <i class="fa-solid fa-fingerprint"></i> REGISTRAR
+            </button>
+            
+            <div id="cancelEditArea" style="display:none; text-align:center; margin-top:10px;">
+                <span onclick="cancelEdit()" style="color:#666; cursor:pointer; font-size:0.75rem; text-decoration:underline;">CANCELAR EDIÇÃO</span>
+            </div>
+        </div>
+
+        <div class="main-content-area">
+            
+            <div class="header-wrapper d-2">
+                
+                <div class="month-navigator">
+                    <button class="nav-btn" onclick="changeViewMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                    <h2 id="currentMonthDisplay">JANEIRO 2026</h2>
+                    <button class="nav-btn" onclick="changeViewMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+
+                <div class="cards-container">
+                    <div class="stat-card card-balance">
+                        <div class="card-icon"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="card-info">
+                            <span class="card-label">Saldo Líquido</span>
+                            <span class="card-value" id="totalBalance">R$ 0,00</span>
+                        </div>
+                    </div>
+                    <div class="stat-card card-expense">
+                        <div class="card-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                        <div class="card-info">
+                            <span class="card-label">Gastos do Mês</span>
+                            <span class="card-value" id="totalExpense">R$ 0,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="block-3d d-3 list-block">
+                    <div class="block-header">
+                        <h3>Extrato</h3>
+                        <i class="fa-solid fa-list"></i>
+                    </div>
+                    <div class="history-list" id="historyList"></div>
+                </div>
+
+                <div class="block-3d d-3 chart-block">
+                    <div class="chart-container">
+                        <canvas id="financeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="js/system.js"></script> 
+    <script src="js/login.js"></script>
+</body>
+</html>

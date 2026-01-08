@@ -1,0 +1,86 @@
+/* --- INPUTS --- */
+.neo-input-group { margin-bottom: 10px; position: relative; }
+.neo-label { color: #888; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; display: block; font-weight: 600; letter-spacing: 1px;}
+
+.neo-input, .neo-select {
+    width: 100%; padding: 14px; 
+    background-color: rgba(0,0,0,0.6) !important;
+    border: 1px solid #333; border-radius: 10px;
+    color: #fff !important; font-size: 0.9rem; font-family: 'Inter', sans-serif;
+    outline: none; transition: 0.3s;
+}
+.neo-input:focus, .neo-select:focus { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,242,255,0.1); background: #000 !important; }
+
+/* --- BOTÕES --- */
+.btn-save-pro {
+    width: 100%; padding: 18px; margin-top: 20px;
+    background: rgba(0, 242, 255, 0.05); border: 1px solid var(--neon-blue); border-radius: 12px;
+    color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px;
+    cursor: pointer; transition: 0.4s; position: relative; overflow: hidden;
+}
+.btn-save-pro:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 30px rgba(0,242,255,0.5); }
+.btn-save-pro.editing { border-color: #ff9f43; color: #ff9f43; background: rgba(255, 159, 67, 0.05); }
+
+/* --- CARDS (Blocos de Vidro) --- */
+.block-3d {
+    background: rgba(15, 15, 20, 0.6); backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;
+    display: flex; flex-direction: column; overflow: hidden;
+}
+
+.stat-card {
+    background: rgba(20, 20, 25, 0.6); backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 25px;
+    display: flex; align-items: center; gap: 20px; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.stat-card:hover { transform: translateY(-5px); background: rgba(30, 30, 35, 0.8); border-color: rgba(255,255,255,0.2); }
+
+/* Ícones dos Cards */
+.card-icon { width: 60px; height: 60px; border-radius: 15px; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.card-balance .card-icon { color: var(--neon-blue); border: 1px solid rgba(0,242,255,0.2); box-shadow: 0 0 20px rgba(0,242,255,0.1); }
+.card-expense .card-icon { color: var(--neon-red); border: 1px solid rgba(255,71,87,0.2); box-shadow: 0 0 20px rgba(255,71,87,0.1); }
+.card-info { display: flex; flex-direction: column; }
+.card-label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+.card-value { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 700; color: #fff; line-height: 1; }
+
+/* --- LISTA DE EXTRATO --- */
+.tx-item {
+    background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px;
+    display: flex; justify-content: space-between; align-items: center; transition: 0.2s;
+    border-left: 3px solid transparent;
+}
+.tx-item:hover { background: rgba(255,255,255,0.05); transform: translateX(5px); }
+.tx-item.income { border-color: var(--neon-green); }
+.tx-item.expense { border-color: var(--neon-red); }
+.green-txt { color: var(--neon-green); }
+.red-txt { color: var(--neon-red); }
+
+/* --- MODAL (Janela de Confirmação) --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); z-index: 5000;
+    display: none; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+}
+.modal-overlay.open { display: flex; opacity: 1; }
+.custom-modal {
+    background: #101010; border: 1px solid #333; padding: 30px; border-radius: 16px;
+    width: 90%; max-width: 400px; text-align: center;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8); transform: scale(0.8); transition: 0.3s;
+}
+.modal-overlay.open .custom-modal { transform: scale(1); }
+.modal-btns { display: flex; gap: 15px; justify-content: center; margin-top: 20px; }
+.m-btn { padding: 12px 25px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; transition: 0.2s; color:#fff; }
+.m-btn.cancel { background: #222; border: 1px solid #333; }
+.m-btn.confirm { background: var(--neon-red); }
+
+/* --- TOASTS (Notificações) --- */
+.toast {
+    min-width: 300px; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1); border-left: 4px solid #fff; border-radius: 8px;
+    padding: 15px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    color: #fff; font-size: 0.9rem;
+    animation: toastSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.toast.success { border-left-color: var(--neon-green); }
+.toast.error { border-left-color: var(--neon-red); }
